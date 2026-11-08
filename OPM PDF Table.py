@@ -1,18 +1,13 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sat Nov  7 18:38:50 2026
-
-@author: corinamccullough
+@author: corina mccullough
 """
-
 
 # Import packages
 import pdfplumber
 import pandas as pd
 
 # Upload data
-with pdfplumber.open('/Users/corinamccullough/Downloads/2026 DC GS Payscale.pdf') as pdf:
+with pdfplumber.open('file path.pdf') as pdf:
     for p in pdf.pages:
         for dc_table in p.extract_tables():
             for r in dc_table:
@@ -51,41 +46,13 @@ df_ps['Grade'] = df_ps['Grade'].astype(int)
 df_ps['Step'] = df_ps['Step'].astype(int)
 df_ps['Salary'] = df_ps['Salary'].astype(int)
 
+# Check data type
 print(df_ps['Grade'].dtype)
 print(df_ps['Step'].dtype)
 print(df_ps['Salary'].dtype)
 
 # Average salary by Grade
 avg_salary = df_ps.groupby('Grade')['Salary'].mean()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
