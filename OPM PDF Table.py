@@ -7,7 +7,7 @@ import pdfplumber
 import pandas as pd
 
 # Upload data
-with pdfplumber.open('file path.pdf') as pdf:
+with pdfplumber.open('2026 DC GS Payscale.pdf') as pdf:
     for p in pdf.pages:
         for dc_table in p.extract_tables():
             for r in dc_table:
